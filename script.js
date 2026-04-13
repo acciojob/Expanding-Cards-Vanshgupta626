@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const data = [
   {
     image:
@@ -12,6 +11,11 @@ const data = [
   },
   {
     image:
+      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    text: "Sunny Beach",
+  },
+  {
+    image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80",
     text: "City on Winter",
   },
@@ -19,11 +23,6 @@ const data = [
     image:
       "https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
     text: "Mountain Cloud",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    text: "Sunny Beach",
   },
 ];
 
@@ -33,6 +32,7 @@ data.forEach((item, index) => {
   const panel = document.createElement("div");
   panel.classList.add("panel");
   panel.id = `panel-${index + 1}`;
+
   if (index === 0) {
     panel.classList.add("active");
   }
@@ -45,16 +45,13 @@ data.forEach((item, index) => {
 
   panel.appendChild(text);
   container.appendChild(panel);
+});
 
-  panel.addEventListener("click", () => {
-    removeActiveClasses();
+const panels = document.querySelectorAll(".panel");
+
+panels.forEach((panel) => {
+  panel.addEventListener("click", function () {
+    panels.forEach((item) => item.classList.remove("active"));
     panel.classList.add("active");
   });
 });
-
-function removeActiveClasses() {
-  const panels = document.querySelectorAll(".panel");
-  panels.forEach((panel) => {
-    panel.classList.remove("active");
-  });
-}
